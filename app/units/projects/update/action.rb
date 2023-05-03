@@ -10,6 +10,7 @@ module Projects
 
       def call
         project.update!(form.to_h)
+        project
       end
 
       private
