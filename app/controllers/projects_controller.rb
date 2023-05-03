@@ -33,9 +33,9 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
-    @project = Projects::Facade.create.new(params: project_params, project: @project).call
+    @project = Projects::Facade.update.new(params: project_params, project: @project).call
 
-    redirect_to project_url(@project), notice: "Project was successfully created."
+    redirect_to project_url(@project), notice: "Project was successfully updated."
   rescue Exceptions::ValidationError => e
     @errors = e.message
 

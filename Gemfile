@@ -14,6 +14,7 @@ gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'bootstrap', '~> 5.3.0.alpha3'
 
 # Dependency injection
 gem 'dry-auto_inject', '~> 0.9.0'

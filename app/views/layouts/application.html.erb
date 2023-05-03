@@ -11,9 +11,22 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <div class="container pt-3">
+        <%= button_to(
+          "Log Out",
+          destroy_user_session_path,
+          class: 'float-end btn btn-primary',
+          method: :delete
+        ) %>
+      </div>
+    <% end %>
     <p class="notice" style="color: green"><%= notice %></p>
     <p class="alert" style="color: red"><%= alert %></p>
 
-    <%= yield %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

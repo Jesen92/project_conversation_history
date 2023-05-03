@@ -1,12 +1,14 @@
 <h1>Projects</h1>
 
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
-  <% end %>
-</div>
-
 <%= link_to "New project", new_project_path %>
+
+<div class="card mt-5" style="width: 35rem;">
+  <div class="card-header">
+    Projects
+  </div>
+  <ul class="list-group list-group-flush">
+    <% @projects.each do |project| %>
+      <li class="list-group-item"><%= link_to project.title, project %></li>
+    <% end %>
+  </ul>
+</div>
