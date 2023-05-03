@@ -15,6 +15,12 @@ gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'bootsnap', require: false
 gem 'devise'
 
+# Dependency injection
+gem 'dry-auto_inject', '~> 0.9.0'
+
+# Form validations
+gem 'dry-validation'
+
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   gem 'pry-byebug'
@@ -31,4 +37,6 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'forgery'
 end
