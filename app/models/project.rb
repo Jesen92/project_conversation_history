@@ -10,5 +10,5 @@ class Project < ApplicationRecord
     done
   ].freeze
 
-  has_many :comments, class_name: 'Projects::Comment'
+  has_many :activities, class_name: 'Projects::Activity'
 end

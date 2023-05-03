@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Projects::StatusUpdate::EntryPoint do
-  subject { described_class.new(params:, project:).call }
+  subject { described_class.new(params: params, project: project, current_user: user).call }
 
+  let(:user) { create(:user) }
   let(:project) { create(:project) }
   let(:params) do
     {
@@ -12,13 +13,17 @@ RSpec.describe Projects::StatusUpdate::EntryPoint do
     }
   end
 
-  before { project }
+  before do
+    user
+    project
+  end
 
   context 'when attributes are valid' do
     it 'updates the project' do
       old_project = project
       expect { subject }.to change(project, :status)
         .from(old_project.status).to(params[:status])
+        .and change(Projects::Status, :count).from(0).to(1)
     end
   end
 

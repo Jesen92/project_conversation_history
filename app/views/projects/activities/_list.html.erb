@@ -1,0 +1,11 @@
+
+<% project.activities.each do |activity| %>
+  <div class="container">
+    <% formatted_type = format_activity_type(activity.type) %>
+    <%= render partial: "projects/#{formatted_type.pluralize}/item", locals: { "#{formatted_type}": activity } %>
+  </div>
+<% end %>
+
+<hr>
+
+<%= render partial: 'projects/comments/form', locals: { project: project } %>

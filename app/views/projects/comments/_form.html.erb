@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5" id="projects-comments-form">
   <%= form_with model: Projects::Comment.new, url: projects_comments_path, method: :post, scope: :projects_comment do |form| %>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
