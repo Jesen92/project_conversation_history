@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Projects::StatusUpdate::EntryPoint do
-  subject { described_class.new(params: params, project: project).call }
+  subject { described_class.new(params:, project:).call }
 
   let(:project) { create(:project) }
-  let(:params) {
+  let(:params) do
     {
       status: Project::STATUSES.last
     }
-  }
+  end
 
   before { project }
 
@@ -23,11 +23,11 @@ RSpec.describe Projects::StatusUpdate::EntryPoint do
   end
 
   context 'when attributes are invalid' do
-    let(:params) {
+    let(:params) do
       {
         status: 'non_existant_status'
       }
-    }
+    end
 
     it_behaves_like 'raises a ValidationError'
   end

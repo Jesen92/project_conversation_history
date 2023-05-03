@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   has_rich_text :description
 
@@ -6,6 +8,7 @@ class Project < ApplicationRecord
     in_progress
     blocked
     done
-  ]
+  ].freeze
 
+  has_many :comments, class_name: 'Projects::Comment'
 end

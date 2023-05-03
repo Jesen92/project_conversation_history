@@ -4,9 +4,8 @@ module Projects
   module StatusUpdate
     class EntryPoint
       def initialize(params:, project:)
-        params = params
         form = Form.new.call(params)
-        @action = Action.new(form: form, project: project)
+        @action = Action.new(form:, project:)
       end
 
       def call

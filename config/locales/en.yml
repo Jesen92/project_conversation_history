@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  validation:
+    projects:
+      errors:
+        status_not_exist: '%{status} does not exist'
+        record_not_exist: '%{record} with id %{id} does not exist'
