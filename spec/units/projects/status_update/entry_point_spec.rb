@@ -2,14 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe Projects::Update::EntryPoint do
+RSpec.describe Projects::StatusUpdate::EntryPoint do
   subject { described_class.new(params: params, project: project).call }
 
   let(:project) { create(:project) }
   let(:params) {
     {
-      title: 'TitleTitle',
-      description: 'DescriptionDescritpion'
+      status: Project::STATUSES.last
     }
   }
 
@@ -18,18 +17,15 @@ RSpec.describe Projects::Update::EntryPoint do
   context 'when attributes are valid' do
     it 'updates the project' do
       old_project = project
-      
-      expect { subject }.to change(project, :title)
-        .from(old_project.title).to(params[:title])
-      expect(project.reload.description.body.to_s).to eq(ActionText::RichText.new(name: 'description', body: params[:description]).body.to_s)
+      expect { subject }.to change(project, :status)
+        .from(old_project.status).to(params[:status])
     end
   end
 
   context 'when attributes are invalid' do
     let(:params) {
       {
-        title: nil,
-        description: nil
+        status: 'non_existant_status'
       }
     }
 
