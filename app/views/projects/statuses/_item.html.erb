@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-end mb-3 mt-3">
+  <div class="w-65 align-right">
+    <div class="card <%= set_status_background_color(status.changed_to) %>">
+      <div class="card-body text-light">
+        <b><%= status.user.full_name %></b> has changed the status from <b><%= status.changed_from.humanize %></b> to <b><%= status.changed_to.humanize %></b>
+      </div>
+    </div>
+  </div>
+</div>
