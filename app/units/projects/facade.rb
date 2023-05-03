@@ -8,5 +8,6 @@ module Projects
     has_use_case :create, Create::EntryPoint
     has_use_case :update, Update::EntryPoint
     has_use_case :destroy, Destroy::EntryPoint
+    has_use_case :status_update, StatusUpdate::EntryPoint
   end
 end

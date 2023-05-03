@@ -18,6 +18,7 @@
 
   </h5>
   <div class="card-body">
+    <%= render partial: 'status_form', locals: { project: @project } %>
     <p class="card-text"><%= @project.description %></p>
     <hr>
     <%= link_to "Edit this project", edit_project_path(@project) %> |
