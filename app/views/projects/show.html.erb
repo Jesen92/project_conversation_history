@@ -25,3 +25,24 @@
     <%= link_to "Back to projects", projects_path %>
   </div>
 </div>
+
+<div class="mt-4">
+  <ul class="nav nav-tabs" id="myTab">
+    <li class="nav-item">
+      <a href="#comments" class="nav-link active" data-bs-toggle="tab">Comments</a>
+    </li>
+    <li class="nav-item">
+      <a href="#history" class="nav-link" data-bs-toggle="tab">History</a>
+    </li>
+  </ul>
+  <div class="container">
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="comments">
+        <%= render partial: 'projects/comments/list', locals: { project: @project } %>  
+      </div>
+      <div class="tab-pane fade" id="history">
+        ...
+      </div>
+    </div>
+  </div>
+</div>

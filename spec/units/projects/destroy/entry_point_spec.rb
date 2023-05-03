@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Projects::Destroy::EntryPoint do
-  subject { described_class.new(project: project).call }
+  subject { described_class.new(project:).call }
 
   let(:project) { create(:project) }
 
