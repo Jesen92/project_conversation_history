@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: project_conversation_history
+  url: <%= ENV.fetch("DATABASE_URL") %>
