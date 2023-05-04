@@ -21,10 +21,10 @@ module Projects
       attr_reader :form, :project, :current_user
 
       def create_project_status(changed_from)
-        Projects::Status.create(changed_from: changed_from, 
-                                changed_to: form[:status], 
+        Projects::Status.create(changed_from:,
+                                changed_to: form[:status],
                                 user: current_user,
-                                project: project)
+                                project:)
       end
     end
   end

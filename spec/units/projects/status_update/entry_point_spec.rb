@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Projects::StatusUpdate::EntryPoint do
-  subject { described_class.new(params: params, project: project, current_user: user).call }
+  subject { described_class.new(params:, project:, current_user: user).call }
 
   let(:user) { create(:user) }
   let(:project) { create(:project) }

@@ -5,9 +5,9 @@ module Projects
     before_action :set_project
 
     def update
-      @project = Projects::Facade.status_update.new(params: status_params, 
+      @project = Projects::Facade.status_update.new(params: status_params,
                                                     project: @project,
-                                                    current_user: current_user).call
+                                                    current_user:).call
       notice = 'Project status was successfully updated.'
     rescue Exceptions::ValidationError => e
       @errors = e.message

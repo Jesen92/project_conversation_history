@@ -4,9 +4,9 @@ module Projects
   module Comments
     module Create
       class EntryPoint
-        def initialize(params:)
+        def initialize(params:, current_user:)
           form = Form.new.call(params)
-          @action = Action.new(form:)
+          @action = Action.new(form:, current_user:)
         end
 
         def call
