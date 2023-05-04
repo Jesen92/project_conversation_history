@@ -8,7 +8,10 @@ Using **Ruby 3.2.1** with **Rails 7.0.4.3**
 
 App for creating projects and tracking project conversation history along with the project status changes.
 
-User can create and delete their own comments. Changing the status will automatically update the projects status and store the activity.
+Project creation uses `rich_text` body. Project can be deleted as long as it doesn't have any activity.
+
+Comments also use `rich_text` body. Users can create and delete their own comments. 
+Changing the status will automatically update the projects status and store the activity.
 
 <br>
 

@@ -39,6 +39,8 @@ class ProjectsController < ApplicationController
     Projects::Facade.destroy.new(project: @project).call
 
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
+  rescue Projects::Facade.destroy::ProjectHasHistory
+    redirect_to project_url(@project), notice: 'Project with any activity can not be deleted'
   end
 
   private
