@@ -153,5 +153,14 @@ RSpec.describe ProjectsController, type: :controller do
       delete :destroy, params: { id: project }
       expect(response).to redirect_to(projects_path)
     end
+
+    context 'when project has activity' do
+      before { create(:comment, project:) }
+
+      it 'does not delete the project' do
+        delete :destroy, params: { id: project }
+        expect(response).to redirect_to(project_path(project))
+      end
+    end
   end
 end
