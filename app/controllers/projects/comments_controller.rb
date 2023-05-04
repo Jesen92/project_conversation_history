@@ -5,13 +5,13 @@ module Projects
     before_action :set_project, only: :create
 
     def create
-      Projects::Facade.comment_create.new(params: projects_comment_params).call
+      Projects::Facade.comment_create.new(params: projects_comment_params, current_user:).call
       notice = 'Comment was successfully created.'
     rescue Exceptions::ValidationError => e
       @errors = e.message
       notice = 'Error while creating a comment.'
     ensure
-      redirect_to project_path(@project, anchor: 'projects-comments-form'), notice:
+      redirect_to project_path(@project), notice:
     end
 
     def destroy
@@ -19,7 +19,7 @@ module Projects
       project = comment.project
       Projects::Facade.comment_destroy.new(comment:, current_user:).call
 
-      redirect_to project_url(project, anchor: 'pojects-comments-form'), notice: 'Comment was successfully destroyed.'
+      redirect_to project_url(project), notice: 'Comment was successfully destroyed.'
     end
 
     private
@@ -29,7 +29,7 @@ module Projects
     end
 
     def projects_comment_params
-      params.require(:projects_comment).permit(:project_id, :user_id, :body)
+      params.require(:projects_comment).permit(:project_id, :body)
     end
   end
 end

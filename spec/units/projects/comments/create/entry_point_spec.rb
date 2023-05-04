@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Projects::Comments::Create::EntryPoint do
-  subject { described_class.new(params:).call }
+  subject { described_class.new(params:, current_user: user).call }
 
   let(:user) { create(:user) }
   let(:project) { create(:project) }
@@ -12,7 +12,6 @@ RSpec.describe Projects::Comments::Create::EntryPoint do
   let(:body) { 'TextTextText' }
   let(:params) do
     {
-      user_id:,
       project_id:,
       body:
     }
@@ -30,12 +29,6 @@ RSpec.describe Projects::Comments::Create::EntryPoint do
   end
 
   context 'when attributes are invalid' do
-    context 'when user does not exist' do
-      let(:user_id) { User.last.id + 10 }
-
-      it_behaves_like 'raises a ValidationError'
-    end
-
     context 'when project does not exist' do
       let(:project_id) { Project.last.id + 10 }
 

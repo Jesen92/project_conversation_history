@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
-    @projects = Project.includes(:comments).all
+    @projects = Project.all
   end
 
   def show; end
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
   rescue Exceptions::ValidationError => e
     @errors = e.message
 
-    render :new, status: :unprocessable_entity
+    render :new
   end
 
   def update
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   rescue Exceptions::ValidationError => e
     @errors = e.message
 
-    render :edit, status: :unprocessable_entity
+    render :edit
   end
 
   def destroy
